@@ -1,0 +1,5 @@
+/home/helin/code/ftprintf/build/CMakeFiles/ft.dir
+/home/helin/code/ftprintf/build/CMakeFiles/run_tests.dir
+/home/helin/code/ftprintf/build/CMakeFiles/test.dir
+/home/helin/code/ftprintf/build/CMakeFiles/edit_cache.dir
+/home/helin/code/ftprintf/build/CMakeFiles/rebuild_cache.dir
