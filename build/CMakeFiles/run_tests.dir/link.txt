@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/run_tests.dir/gtest_ftprintf.cpp.o -o run_tests  libft.a /home/helin/gtest-install/lib/libgtest_main.a /home/helin/gtest-install/lib/libgtest.a

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libft.a CMakeFiles/ft.dir/ft_printf.c.o
-/usr/bin/ranlib libft.a
