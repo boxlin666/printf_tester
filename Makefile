@@ -1,52 +1,76 @@
-NAME	= libftprintf.a
+# Makefile for ft_printf project
+# Based on the 42 school ft_printf specification (Version 10.2)
 
-# 编译器 & 编译选项
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-AR		= ar rcs
-RM		= rm -f
+# Name of the library to be created
+NAME = libftprintf.a
 
-# ft_printf 的源文件
-SRCS	= ft_printf.c ft_putchar.c ft_putstr.c ft_putnbr.c \
-		  ft_putunbr.c ft_puthex.c ft_puthex_upper.c ft_putptr.c
+# Compiler and flags
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-OBJS	= $(SRCS:.c=.o)
+# Source files: List all your .c files here based on ft_printf.h
+SRCS = ft_printf.c \
+	   ft_putchar.c \
+	   ft_putstr.c \
+	   ft_putptr.c \
+	   ft_putnbr.c \
+	   ft_putunbr.c \
+	   ft_puthex.c
 
-TEST_NAME	= test_ft_printf
-TEST_SRC	= test_ft_printf.c
-CRITERION_FLAGS = -lcriterion
+# Object files: Automatically generated from source files
+OBJS = $(SRCS:.c=.o)
 
-# libft 路径
-LIBFT_DIR	= libft
-LIBFT_LIB	= $(LIBFT_DIR)/libft.a
+# Libft integration (if you have a libft folder with its own Makefile)
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-# 默认目标
-all: $(LIBFT_LIB) $(NAME)
+# All rule: Default rule to build the library
+all: $(NAME)
 
-# 构建 libft
-$(LIBFT_LIB):
-	$(MAKE) -C $(LIBFT_DIR)
+# Rule to build the library
+$(NAME): $(OBJS) $(LIBFT)
+	@ar rcs $@ $(OBJS) $(LIBFT)
+	@echo "Library $(NAME) created successfully."
 
-# 构建 ft_printf 的 .a 库（包含 ft_printf 的目标文件和 libft）
-$(NAME): $(OBJS)
-	cp $(LIBFT_LIB) $(NAME)
-	$(MAKE) -C $(LIBFT_DIR)
-	$(AR) $(NAME) $(OBJS)
+# If libft exists, build it first
+$(LIBFT):
+	@if [ -f $(LIBFT_DIR)/Makefile ]; then \
+		make -C $(LIBFT_DIR); \
+	else \
+		echo "Libft not found or not needed."; \
+	fi
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Compile .c files to .o files
+%.o: %.c ft_printf.h
+	@$(CC) $(CFLAGS) -c $< -o $@
 
+# Clean rule: Remove object files
 clean:
-	$(RM) $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR) clean
+	@rm -f $(OBJS)
+	@if [ -f $(LIBFT_DIR)/Makefile ]; then \
+		make clean -C $(LIBFT_DIR); \
+	fi
+	@echo "Object files removed."
 
+# Fclean rule: Remove object files and the library
 fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	@rm -f $(NAME)
+	@if [ -f $(LIBFT_DIR)/Makefile ]; then \
+		make fclean -C $(LIBFT_DIR); \
+	fi
+	@echo "Library removed."
 
-test: $(NAME) $(TEST_SRC)
-	$(CC) $(CFLAGS) -o $(TEST_NAME) $(TEST_SRC) $(NAME) $(CRITERION_FLAGS)
-	./$(TEST_NAME)
-
+# Re rule: Rebuild everything
 re: fclean all
-.PHONY: all clean fclean re
+
+# Bonus rule: Compile bonus files separately
+bonus:
+	# Add your bonus source files here, e.g., *_bonus.c
+	# Example: BONUS_SRCS = ft_bonus.c another_bonus.c
+	# Then: $(CC) $(CFLAGS) -c $(BONUS_SRCS)
+	# Finally, add them to the library: ar rcs $(NAME) $(BONUS_OBJS)
+	@echo "Implement bonus sources in this rule and add to $(NAME)."
+	# For now, this is a placeholder. Update it based on your bonus files.
+
+# Phony targets: These are not actual files
+.PHONY: all clean fclean re bonus
