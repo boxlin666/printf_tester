@@ -6,10 +6,11 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:08:17 by helin             #+#    #+#             */
-/*   Updated: 2025/04/07 16:12:03 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:50:50 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <unistd.h>
 
 int	ft_putunbr(unsigned int n)

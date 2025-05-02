@@ -6,17 +6,19 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:07:41 by helin             #+#    #+#             */
-/*   Updated: 2025/04/28 15:19:37 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:49:13 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <unistd.h>
 
 static int	ft_putnbr_rec(unsigned int n)
 {
 	char	c;
-	int		count = 0;
+	int		count;
 
+	count = 0;
 	if (n >= 10)
 		count += ft_putnbr_rec(n / 10);
 	c = '0' + (n % 10);
@@ -24,12 +26,23 @@ static int	ft_putnbr_rec(unsigned int n)
 	return (count + 1);
 }
 
-int	ft_putnbr(int n)
+int	ft_putnbr(int n, t_format *spec)
 {
-	int	count = 0;
+	int	count;
 
+	count = 0;
 	if (n == -2147483648)
 		return (write(1, "-2147483648", 11));
+	if (spec->flag_plus && n >= 0)
+	{
+		write(1, "-", 1);
+		count++;
+	}
+	else if(spec->flag_space && n >= 0)
+	{
+		write(1, " ", 1);
+		count++;
+	}
 	if (n < 0)
 	{
 		write(1, "-", 1);

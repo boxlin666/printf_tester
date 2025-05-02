@@ -15,7 +15,8 @@ SRCS = ft_printf.c \
 	   ft_putptr.c \
 	   ft_putnbr.c \
 	   ft_putunbr.c \
-	   ft_puthex.c
+	   ft_puthex.c \
+	   parse_format.c
 
 # Object files: Automatically generated from source files
 OBJS = $(SRCS:.c=.o)

@@ -6,10 +6,11 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:09:44 by helin             #+#    #+#             */
-/*   Updated: 2025/04/07 16:09:46 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 15:00:00 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <unistd.h>
 
 int ft_putchar(char c)

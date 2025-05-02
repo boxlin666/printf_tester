@@ -6,10 +6,11 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:07:12 by helin             #+#    #+#             */
-/*   Updated: 2025/04/28 15:03:46 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:50:39 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <unistd.h>
 
 int	ft_putptr(void *ptr)

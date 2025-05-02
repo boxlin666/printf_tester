@@ -6,19 +6,20 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:08:27 by helin             #+#    #+#             */
-/*   Updated: 2025/04/25 14:59:34 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 14:59:58 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <unistd.h>
 
-int	ft_puthex(unsigned int n, int isUpper)
+int	ft_puthex(unsigned int n, int isUpper, t_format *spec)
 {
 	char	*hex;
 	char	buf[8];
-	int i;
-	int count;
-	
+	int		i;
+	int		count;
+
 	if (isUpper)
 		hex = "0123456789ABCDEF";
 	else
@@ -26,6 +27,8 @@ int	ft_puthex(unsigned int n, int isUpper)
 	i = 0, count = 0;
 	if (n == 0)
 		return (write(1, "0", 1));
+	if (spec->flag_hash)
+		count += write(1, "0x", 2);
 	while (n)
 	{
 		buf[i++] = hex[n % 16];
