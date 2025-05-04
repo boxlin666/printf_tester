@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:07:12 by helin             #+#    #+#             */
-/*   Updated: 2025/05/02 14:50:39 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 18:14:11 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ int	ft_putptr(void *ptr)
 {
 	unsigned long	n;
 	int				count;
-	char			hex[] = "0123456789abcdef";
+	char			*hex;
 	char			buf[sizeof(n) * 2];
 	int				i;
 
+	hex = "0123456789abcdef";
 	count = 0;
 	i = 0;
 	n = (unsigned long)ptr;

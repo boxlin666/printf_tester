@@ -6,14 +6,14 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:09:44 by helin             #+#    #+#             */
-/*   Updated: 2025/05/02 15:00:00 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 18:12:34 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 
-int ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	return write(1, &c, 1);
+	return (write(1, &c, 1));
 }

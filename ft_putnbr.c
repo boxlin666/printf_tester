@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:07:41 by helin             #+#    #+#             */
-/*   Updated: 2025/05/02 14:49:13 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 18:14:21 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	ft_putnbr(int n, t_format *spec)
 		return (write(1, "-2147483648", 11));
 	if (spec->flag_plus && n >= 0)
 	{
-		write(1, "-", 1);
+		write(1, "+", 1);
 		count++;
 	}
-	else if(spec->flag_space && n >= 0)
+	else if (spec->flag_space && n >= 0)
 	{
 		write(1, " ", 1);
 		count++;

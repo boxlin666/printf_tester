@@ -6,25 +6,23 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:08:27 by helin             #+#    #+#             */
-/*   Updated: 2025/05/02 14:59:58 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 18:18:00 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 
-int	ft_puthex(unsigned int n, int isUpper, t_format *spec)
+int	ft_puthex(unsigned int n, t_format *spec)
 {
 	char	*hex;
 	char	buf[8];
 	int		i;
 	int		count;
 
-	if (isUpper)
-		hex = "0123456789ABCDEF";
-	else
-		hex = "0123456789abcdef";
-	i = 0, count = 0;
+	i = 0;
+	count = 0;
+	hex = "0123456789abcdef";
 	if (n == 0)
 		return (write(1, "0", 1));
 	if (spec->flag_hash)
